@@ -1,0 +1,111 @@
+// UpdateDialog.module.scss
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: $white;
+  padding: rem_calc(24);
+  gap: rem_calc(24);
+  border-radius: rem_calc(16);
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: rem_calc(730);
+  height: rem_calc(250);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  .closeButton {
+    position: absolute;
+    top: rem_calc(30);
+    right: rem_calc(25);
+    background: none;
+    border: none;
+    font-size: rem_calc(24);
+    cursor: pointer;
+  }
+
+  .title {
+    text-align: center;
+    font-size: rem_calc(24);
+    line-height: rem_calc(36);
+    font-weight: 600;
+    color: #2a2a2a;
+  }
+
+  .formWrapper {
+    display: flex;
+    width: rem_calc(681);
+    align-items: center;
+    gap: rem_calc(24);
+
+    input[type='checkbox'] {
+      /* Hide the default checkbox */
+      margin-right: rem-calc(12);
+      appearance: none;
+      -webkit-appearance: none; /* For Safari */
+      background-color: #f0f0f0;
+      border: 1px solid #bdbdbd; /* Border color */
+      width: rem_calc(20);
+      height: rem_calc(20);
+      cursor: pointer;
+      display: inline;
+      border-radius: 5px; /* Add rounded corners if needed */
+      position: relative;
+      transition: all 0.3s ease;
+      vertical-align: middle;
+
+      &:checked {
+        background-color: #601feb; /* Background color when checked */
+        border-color: #601feb; /* Change border color when checked */
+      }
+
+      &:checked::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 7px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    .input {
+      width: rem_calc(642);
+      padding: rem_calc(15) rem_calc(24);
+      border-radius: rem_calc(120);
+      border: 1px solid #e0e0e0;
+      font-size: rem_calc(16);
+      margin-bottom: rem_calc(24);
+    }
+  }
+
+  .saveButton {
+    width: rem_calc(681);
+    height: rem_calc(59);
+    padding: 0 rem_calc(32);
+    border-radius: rem_calc(30);
+    background-color: #601feb;
+    color: $white;
+    font-size: rem_calc(16);
+    line-height: rem_calc(28.8);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
+}
