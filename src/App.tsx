@@ -1,7 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
+import { Todo } from './views/Todo';
 
-const App: React.FC = () => {
-  return <div></div>;
-};
+const App: FC = () => {
+  return (
+    <Todo />
+  )
+}
 
 export default App;

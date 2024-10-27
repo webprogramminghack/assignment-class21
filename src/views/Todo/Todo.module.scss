@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  
+  .header {
+    padding: rem-calc(111) rem-calc(0) rem-calc(40);
+    text-align: center;
+    gap: rem-calc(4);
+    .title {
+      font-size: rem-calc(40);
+      line-height: rem-calc(60);
+      font-weight: 600;
+    }
+    .subtitle {
+      font-size: rem-calc(20);
+      line-height: rem-calc(36);
+      font-weight: 400;
+    }
+  }
+
+  .content {
+    background-color: $background-white;
+    border-radius: rem-calc(24);
+    width: rem-calc(837);
+    margin-bottom: rem-calc(135);
+
+    .form {
+      display: flex;
+      margin: rem-calc(16) rem-calc(28) rem-calc(16) rem-calc(20);
+      gap: rem-calc(12);  
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: rem-calc(12);  
+      padding: rem-calc(16) rem-calc(24);
+
+      .listItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: rem-calc(789);
+        height: rem-calc(53);
+        border-radius: rem-calc(120);
+        padding: rem-calc(12) rem-calc(0) rem-calc(12) rem-calc(24);
+        background-color: $white;
+
+        .divider {
+          width: 100%;
+          height: rem-calc(1);
+          background-color: red;
+        }
+
+
+        .listItemContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: rem-calc(16);
+          line-height: rem-calc(28.8);
+          .checkbox {
+            width: rem-calc(20);
+            height: rem-calc(20);
+            border-radius: rem-calc(5);
+            margin-right: rem-calc(14);
+            &.checked {
+              background-color: #601FEB;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            &.unchecked {
+              border: rem-calc(1) solid #BDBDBD;
+            }
+          }
+        }
+      
+      }
+      
+
+      .delete {
+        margin-left: rem-calc(57);
+        margin-right: rem-calc(24);
+      }
+      .spinnerContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .spinner {
+          margin-top: rem-calc(8);
+          margin-bottom: rem-calc(8);
+          width: rem-calc(32);
+          height: rem-calc(32);
+          display: inline-block;
+          border-radius: 50%;
+          border-width: rem-calc(4);
+          border-style: solid;
+          background: linear-gradient(white, white) padding-box,
+                      linear-gradient(90deg, rgb(96, 31, 235, 100%), rgba(96, 31, 235, 18%), white) border-box;
+          border-color: transparent;
+          animation: spin 1s linear infinite;
+        }
+      }
+    
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    }
+  }
+}
