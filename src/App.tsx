@@ -19,16 +19,20 @@ const App: React.FC = () => {
             className={styles.inputTask}
             placeholder='Create new task'
           />
-          <button className={styles.button}>Add</button>
+          <button className={styles.button}>
+            <p>Add</p>
+          </button>
         </form>
         {/* todo list */}
         <ul className={styles.listContainer}>
           <li className={styles.list}>
-            Read a Book
+            <input type="checkbox" />
+            <p>Read a Book</p>
             <IconTrash />
           </li>
           <li className={styles.list}>
-            Learn React For 1 Hour
+            <input type="checkbox" />
+            <p>Learn React For 1 Hour</p>
             <IconTrash />
           </li>
         </ul>
