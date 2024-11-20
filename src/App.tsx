@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './App.module.scss';
+import IconTrash from './assets/svg/icon-trash.svg';
 
 const App: React.FC = () => {
   return (
@@ -21,11 +22,16 @@ const App: React.FC = () => {
           <button className={styles.button}>Add</button>
         </form>
         {/* todo list */}
-        <div>
-          <ul>
-
-          </ul>
-        </div>
+        <ul className={styles.listContainer}>
+          <li className={styles.list}>
+            Read a Book
+            <IconTrash />
+          </li>
+          <li className={styles.list}>
+            Learn React For 1 Hour
+            <IconTrash />
+          </li>
+        </ul>
       </div>
     </div>
   );

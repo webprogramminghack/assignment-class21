@@ -60,6 +60,26 @@
         color: #FFFFFF;
       }
     }
+
+    .listContainer {
+      display: flex;
+      flex-direction: column;
+      width: rem-calc(821);
+      padding: rem-calc(8) 0 0 0;
+      gap: rem-calc(24);
+
+      .list {
+        display: flex;
+        flex-direction: row;
+        width: rem-calc(789);
+        height: rem-calc(53);
+        padding: rem-calc(12) rem-calc(24);
+        gap: rem-calc(57);
+        border-radius: rem-calc(120);
+        background: #FFFFFF;
+        margin: rem-calc(8) rem-calc(16);
+      }
+    }
   }
 }
 
