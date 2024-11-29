@@ -20,7 +20,7 @@ export type TodosResponse = {
   hasNextPage: boolean;
 }
 
-export const getScrollTodos: QueryFunction<TodoResponse, ScrollTodosQueryKey, number> = async ({
+export const getScrollTodos: QueryFunction<TodosResponse, ScrollTodosQueryKey, number> = async ({
   queryKey,
   pageParam = 0
 }) => {

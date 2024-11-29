@@ -7,7 +7,8 @@ type IntersectionObserverHookProps = {
 };
 
 export const useIntersectionObserver = <
-  TLastElement extends HTMLElement,
+  TContainerElement extends HTMLElement,
+  TLastElement extends HTMLElement
 >({
   callback,
   hasNextPage,
@@ -15,6 +16,7 @@ export const useIntersectionObserver = <
 }: IntersectionObserverHookProps) => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const lastElementRef = useRef<TLastElement | null>(null);
+  const containerRef = useRef<TContainerElement | null>(null);
 
 
 
@@ -29,15 +31,14 @@ export const useIntersectionObserver = <
           const entry = entries[0];
           
           console.log('entry :>> ', entry.isIntersecting, entry.intersectionRatio, entry.intersectionRect);
-          if (entry.isIntersecting && entry?.intersectionRatio >= 0.8) {
-            observerRef.current?.disconnect();
+          if (entry.isIntersecting && !isFetchingNextPage && hasNextPage) {
             callback();
           }
         },
         {
-          root: null,
+          root: containerRef.current,
           rootMargin: '0px',
-          threshold: 0.8
+          threshold: 0.1
         }
       );
 
@@ -55,5 +56,5 @@ export const useIntersectionObserver = <
   }, [observe]); // Tambahkan observe ke dependency list
 
 
-  return { lastElementRef };
+  return { containerRef ,lastElementRef };
 };

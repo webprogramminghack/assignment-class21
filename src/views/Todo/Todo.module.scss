@@ -37,6 +37,9 @@
       flex-direction: column;
       gap: rem-calc(12);  
       padding: rem-calc(16) rem-calc(24);
+      overflow-y: scroll;
+      height: 60vh;
+
 
       .listItem {
         display: flex;
@@ -76,6 +79,10 @@
             &.unchecked {
               border: rem-calc(1) solid #BDBDBD;
             }
+          }
+
+          .strikethrough {
+            text-decoration: line-through;
           }
         }
       

@@ -17,7 +17,7 @@ import {
 } from '@/hooks/todos/useCreateTodo';
 import clsx from 'clsx';
 import { useGetInfiniteTodos } from '@/hooks/todos/useGetInfiniteTodos';
-import { useIntersectionObserver, useScrollObserver } from '@/hooks/general/useIntersectionObserver';
+import { useIntersectionObserver } from '@/hooks/general/useIntersectionObserver';
 
 export const Todo: FC = () => {
   // const { todos, isFetching, queryKey } = useGetTodos({
@@ -42,12 +42,12 @@ export const Todo: FC = () => {
     fetchNextPage,
     queryKey,
   } = useGetInfiniteTodos({
-    order: 'desc',
-    limit: 10,
+    order: 'desc'
   }, !isCreating || !isUpdating || !isDeleting);
 
-  const { lastElementRef } = useIntersectionObserver<
-    HTMLDivElement
+  const { containerRef, lastElementRef } = useIntersectionObserver<
+    HTMLUListElement,
+    HTMLLIElement
   >({
     callback: fetchNextPage,
     hasNextPage,
@@ -137,7 +137,7 @@ export const Todo: FC = () => {
             </Button>
           </form>
 
-          <ul className={styles.list}>
+          <ul className={styles.list} ref={containerRef}>
             {todos.map((todo) => (
               
               <li
@@ -157,7 +157,7 @@ export const Todo: FC = () => {
                   >
                     <Icon />
                   </div>
-                  <p>{todo.title}</p>
+                  <p className={clsx({[styles.strikethrough]: todo.completed})}>{todo.title}</p>
                 </div>
                 <Delete
                   data-id={todo.id}
@@ -171,8 +171,8 @@ export const Todo: FC = () => {
                 <div className={styles.spinner} />
               </div>
             )}
+            <li ref={lastElementRef} />
           </ul>
-          <div ref={lastElementRef} />
         </div>
       </div>
       <form onSubmit={onSubmitUpdateForm}>
