@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e5e5;
+  flex-direction: column;
+  
+  .header {
+    width: rem-calc(591);
+    height: rem-calc(100);
+    gap: rem-calc(4);
+    text-align: center;
+    margin: rem-calc(20);
+  
+    .title {
+      font-weight: 600;
+      font-size: rem-calc(40);
+      line-height: rem-calc(60);
+    }
+    
+    .description {
+      font-weight: 400;
+      font-size: rem-calc(20);
+      line-height: rem-calc(36);
+      color: #444;
+    }
+  }
+  
+  .content {
+    width: rem-calc(837);
+    height: rem-calc(662);
+    padding: rem-calc(8);
+    border-radius: rem-calc(24);
+    background: #FAFAFA;
+    margin: rem-calc(20);
+
+    .formContainer {
+      display: flex;
+      width: rem-calc(821);
+      height: rem-cacl(91);
+      padding: rem-calc(16) rem-calc(12);
+      gap: rem-calc(12);
+      
+      .inputTask {
+        width: rem-calc(645);
+        height: rem-calc(59);
+        padding: rem-calc(15) rem-calc(24);
+        border-radius: rem-calc(120);
+        border: 1px solid #E0E0E0;
+      }
+
+      .button {
+        width: rem-calc(132);
+        height: rem-calc(59);
+        padding: 0 rem-calc(32);
+        gap: rem-calc(8);
+        border-radius: rem-calc(24);
+        background: #601FEB;
+        color: #FFFFFF;
+      }
+    }
+
+    .listContainer {
+      display: flex;
+      flex-direction: column;
+      width: rem-calc(821);
+      padding: rem-calc(8) 0 0 0;
+      gap: rem-calc(16);
+      margin: rem-calc(16);
+
+      .list {
+        display: flex;
+        flex-direction: row;
+        width: rem-calc(789);
+        height: rem-calc(53);
+        padding: rem-calc(12) rem-calc(24);
+        gap: rem-calc(57);
+        border-radius: rem-calc(120);
+        background: #FFFFFF;
+      }
+    }
+  }
+}
+
