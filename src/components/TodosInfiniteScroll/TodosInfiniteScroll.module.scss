@@ -52,13 +52,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        .checkBox {
+        .checkbox {
+          cursor: pointer;
           width: rem-calc(20);
           height: rem-calc(20);
-          border-radius: rem-calc(
-            15
-          ); // kenapa tidak bisa di styling ya si checkbox
-          border: 1px solid #bdbdbd; // ini juga tidak ngefek
+          border-radius: rem-calc(5);
+          margin-right: rem-calc(14);
+          &.checked {
+            background-color: #601feb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          &.unchecked {
+            border: rem-calc(1) solid #bdbdbd;
+          }
         }
         p {
           padding: rem-calc(4);
@@ -70,7 +78,9 @@
           cursor: pointer;
         }
       }
-
+      & .strikethrough {
+        text-decoration: line-through;
+      }
       input {
         padding: rem-calc(4);
         width: auto;
