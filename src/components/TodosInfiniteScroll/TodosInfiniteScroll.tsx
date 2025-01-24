@@ -26,7 +26,7 @@ export const TodosInfiniteScroll: React.FC = () => {
     queryKey,
   } = useGetInfiniteTodos({
     order: 'desc',
-    limit: 20,
+    limit: 10,
   });
 
   const [newTodoText, setNewTodoText] = useState('');
