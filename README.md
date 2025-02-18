@@ -1,3 +1,5 @@
+Harusnya ini udah sesuai ada garis tengah dan centang di kotaknya kak
+
 # Class 20
 
 This project involves running a TODO server. Follow the steps below to get started.
