@@ -1,0 +1,106 @@
+.todoContainer {
+  margin: 0 auto;
+  width: rem-calc(837);
+  height: auto;
+  background-color: #fafafa;
+  padding: rem-calc(8);
+  border-radius: rem-calc(25);
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: rem-calc(8);
+    .newTodoInput {
+      border: rem-calc(1) solid #e0e0e0;
+      margin: rem-calc(16) rem-calc(12);
+      padding: rem-calc(15) rem-calc(24);
+      width: 100%;
+      border-radius: rem-calc(25);
+      line-height: rem-calc(28.8);
+      font-size: rem-calc(16);
+      font-weight: 400;
+    }
+    button {
+      font-weight: 600;
+      font-size: rem-calc(16);
+      color: #fff;
+      border-radius: 5rem;
+      line-height: rem-calc(28.8);
+      margin: auto rem-calc(20) auto 0;
+      padding: rem-calc(15) rem-calc(51);
+      background-color: #601feb;
+    }
+  }
+
+  .todos {
+    max-height: rem-calc(300);
+    overflow-y: auto;
+    padding-right: rem-calc(8);
+    margin: rem-calc(8);
+    padding: rem-calc(16);
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: rem-calc(12) rem-calc(24);
+      gap: rem-calc(8);
+      background-color: #fff;
+      border-radius: rem-calc(120);
+      margin: rem-calc(16) 0;
+      .listCheckWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .checkbox {
+          cursor: pointer;
+          width: rem-calc(20);
+          height: rem-calc(20);
+          border-radius: rem-calc(5);
+          margin-right: rem-calc(14);
+          &.checked {
+            background-color: #601feb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          &.unchecked {
+            border: rem-calc(1) solid #bdbdbd;
+          }
+        }
+        p {
+          padding: rem-calc(4);
+          width: auto;
+          border: none;
+          font-weight: 600;
+          font-size: rem-calc(16);
+          line-height: rem-calc(28.8);
+          cursor: pointer;
+        }
+      }
+      & .strikethrough {
+        text-decoration: line-through;
+      }
+      input {
+        padding: rem-calc(4);
+        width: auto;
+        border: none;
+      }
+
+      &:first-child {
+        border-top: none;
+      }
+
+      .deleteIcon {
+        cursor: pointer;
+        width: rem-calc(24);
+        height: rem-calc(24);
+      }
+    }
+  }
+  .spinners {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

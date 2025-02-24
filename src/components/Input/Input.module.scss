@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  height: rem-calc(59);
+  border-radius: rem-calc(120);
+  border: rem-calc(1) solid #E0E0E0;
+  padding: rem-calc(15) rem-calc(24);
+
+  font-weight: 400;
+  font-size: rem-calc(16);
+  line-height: rem-calc(28.8);
+  &:focus {
+    outline: none;
+  }
+}

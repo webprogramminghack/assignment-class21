@@ -1,0 +1,17 @@
+.main {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-weight: 600;
+    font-size: rem-calc(40);
+    line-height: rem-calc(60);
+  }
+  h2 {
+    font-weight: 400;
+    font-size: rem-calc(20);
+    line-height: rem-calc(36);
+    padding: 0 0 rem-calc(40) 0;
+    color: #444;
+  }
+}

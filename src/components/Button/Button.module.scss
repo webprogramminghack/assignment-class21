@@ -1,0 +1,22 @@
+.button {
+  width: 100%;
+  &.normalWidth {
+    width: rem-calc(132);
+  }
+  height: rem-calc(59);
+  background-color: $primary;
+  border-radius: rem-calc(24);
+  color: $white;
+  line-height: rem-calc(28.8);
+  font-size: rem-calc(16);
+  font-weight: 600;
+  padding: rem-calc(15) rem-calc(51);
+
+  &:hover {
+    outline: none;
+    background-color: $hover;
+  }
+  &:focus {
+    outline: none;
+  }
+}
