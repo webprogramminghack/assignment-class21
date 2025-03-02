@@ -31,7 +31,6 @@ export const UpdateDialog: React.FC<UpdateDialogProps> = ({
   const [title, setTitle] = useState(todo.title);
   const [completed, setCompleted] = useState(todo.completed);
 
-  // Use the useOptimisticUpdateTodo hook
   const { updateTodo } = useOptimisticUpdateTodo();
 
   const handleSave = (e: FormEvent<HTMLFormElement>) => {
@@ -43,7 +42,6 @@ export const UpdateDialog: React.FC<UpdateDialogProps> = ({
       completed, // updated completed state if it exists
     };
 
-    // Prepare the update variables
     const variables: UpdateTodoVariables = {
       payload: updatedTodo, // Send the updated todo object
       queryKey, // Assuming queryKey is available in this component
@@ -76,7 +74,9 @@ export const UpdateDialog: React.FC<UpdateDialogProps> = ({
             <input
               type='text'
               value={title}
-              className={styles.input}
+              className={`${styles.input} ${
+                completed ? styles.completedText : ''
+              }`}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setTitle(e.target.value)
               }

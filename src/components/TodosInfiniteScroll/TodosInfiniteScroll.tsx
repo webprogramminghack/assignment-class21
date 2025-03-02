@@ -1,9 +1,5 @@
 import { useGetInfiniteTodos } from '@/hooks/todos/useGetInfiniteTodos';
-import {
-  UpdateTodoVariables,
-  useOptimisticUpdateTodo,
-} from '@/hooks/todos/useOptimisticUpdateTodo';
-import React, { FormEvent, MouseEvent, KeyboardEvent, useState } from 'react';
+import React, { FormEvent, MouseEvent, ChangeEvent, useState } from 'react';
 import TrashIcon from '@/assets/svg/icon-trash.svg';
 import styles from './TodosInfiniteScroll.module.scss';
 import { useIntersectionObserver } from '@/hooks/general/useIntersectionObserver';
@@ -15,6 +11,10 @@ import {
   CreateTodoVariables,
   useOptimisticCreateTodo,
 } from '@/hooks/todos/useOptimisticCreateTodo';
+import {
+  UpdateTodoVariables,
+  useOptimisticUpdateTodo,
+} from '@/hooks/todos/useOptimisticUpdateTodo';
 
 export const TodosInfiniteScroll: React.FC = () => {
   const {
@@ -27,19 +27,18 @@ export const TodosInfiniteScroll: React.FC = () => {
     queryKey,
   } = useGetInfiniteTodos({
     order: 'desc',
-    limit: 7,
+    limit: 10,
   });
 
   const [newTodoText, setNewTodoText] = useState('');
 
-  // newUpdateTodo
-  const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog visibility
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState<null | {
     id: string;
     title: string;
     completed: boolean;
     date: string;
-  }>(null); // State for the selected todo
+  }>(null);
 
   const { createTodo, isCreating } = useOptimisticCreateTodo();
   const { deleteTodo } = useOptimisticDeleteInfiniteTodo();
@@ -76,35 +75,27 @@ export const TodosInfiniteScroll: React.FC = () => {
     }
   };
 
+  const toggleTodoCompletion = (todoChecked: boolean, todoId: string) => {
+    const updatedTodo = todos.find((todo) => todo.id === todoId);
+
+    if (!updatedTodo) return;
+
+    const variables: UpdateTodoVariables = {
+      payload: { ...updatedTodo, completed: todoChecked }, // Hanya kirim satu todo
+      queryKey,
+    };
+
+    updateTodo(variables);
+  };
+
   const openUpdateDialog = (todo: Todo) => {
-    setSelectedTodo(todo); // Set the todo to be edited
-    setIsDialogOpen(true); // Open the dialog
+    setSelectedTodo(todo);
+    setIsDialogOpen(true);
   };
 
   const closeUpdateDialog = () => {
-    setIsDialogOpen(false); // Close the dialog
-    setSelectedTodo(null); // Clear the selected todo
-  };
-
-  const handleUpdateTodo = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      const input = e.currentTarget;
-      const newValue = input.value.trim();
-      const todoId = input.dataset.id;
-
-      if (todoId && newValue) {
-        const todoToUpdate = todos.find((todo) => todo.id === todoId);
-
-        if (todoToUpdate) {
-          const variables: UpdateTodoVariables = {
-            payload: todoToUpdate,
-            queryKey,
-          };
-
-          updateTodo(variables);
-        }
-      }
-    }
+    setIsDialogOpen(false);
+    setSelectedTodo(null);
   };
 
   return (
@@ -138,16 +129,20 @@ export const TodosInfiniteScroll: React.FC = () => {
                     <label className={styles.checkCompleted}>
                       <input
                         type='checkbox'
-                        checked={todo.completed} // Checkbox reflects the completed status
-                        onChange={() => openUpdateDialog(todo)} // Open dialog on change
+                        checked={todo.completed}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          toggleTodoCompletion(e.target.checked, todo.id)
+                        }
                       />
                     </label>
-                    <input
-                      type='text'
-                      defaultValue={todo.title}
-                      data-id={todo.id}
-                      onKeyDown={handleUpdateTodo}
-                    />
+                    <span
+                      className={`${styles.todoText} ${
+                        todo.completed ? styles.completedText : ''
+                      }`}
+                      onClick={() => openUpdateDialog(todo)}
+                    >
+                      {todo.title}
+                    </span>
                   </div>
                   <TrashIcon
                     className={styles.deleteIcon}
@@ -173,7 +168,6 @@ export const TodosInfiniteScroll: React.FC = () => {
         )}
       </div>
 
-      {/* Render the UpdateDialog */}
       {selectedTodo && (
         <UpdateDialog
           isOpen={isDialogOpen}

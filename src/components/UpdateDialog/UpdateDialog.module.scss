@@ -91,6 +91,11 @@
       border: 1px solid #e0e0e0;
       font-size: rem_calc(16);
       margin-bottom: rem_calc(24);
+      transition: text-decoration 0.3s ease-in-out;
+    }
+
+    .completedText {
+      text-decoration: line-through;
     }
   }
 
