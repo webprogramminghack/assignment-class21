@@ -1,0 +1,170 @@
+.pageContainer {
+  margin: 0 auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center; // centers horizontally
+  align-items: center;
+  flex-direction: column;
+  height: rem-calc(802);
+  gap: rem-calc(40);
+  z-index: 10;
+
+  .titleHeader {
+    display: flex;
+    gap: rem-calc(4);
+    flex-direction: column;
+    align-items: center;
+    color: $black;
+
+    .title {
+      font-size: rem-calc(40);
+      font-weight: 600;
+      line-height: rem-calc(60);
+    }
+
+    .description {
+      font-size: rem-calc(20);
+      font-weight: 400;
+      line-height: rem-calc(36);
+    }
+  }
+
+  .containerForm {
+    width: rem-calc(837);
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    border-radius: rem-calc(24);
+    padding: rem-calc(8);
+
+    .inputWrapper {
+      width: rem-calc(821);
+      height: rem-calc(91);
+      padding: rem-calc(16) rem-calc(12);
+      gap: rem-calc(12);
+      display: flex;
+      justify-content: space-evenly;
+
+      .newTodoInput {
+        border: 1px solid #e0e0e0;
+        padding: rem-calc(15) rem-calc(24);
+        width: rem-calc(645);
+        height: rem-calc(59);
+        border-radius: rem-calc(120);
+      }
+
+      .addButton {
+        padding: 0 rem_calc(32);
+        font-size: rem_calc(16);
+        font-weight: 600;
+        line-height: rem_calc(28.8);
+        color: #ffffff;
+        border-radius: rem_calc(5);
+        background-color: #601feb;
+        gap: rem_calc(8);
+      }
+    }
+
+    .todoContainer {
+      width: rem-calc(821);
+      padding: rem_calc(16);
+      gap: rem_calc(24);
+      align-items: center;
+
+      .todos {
+        padding: 0 rem_calc(8);
+        display: flex;
+        flex-direction: column;
+        gap: rem_calc(16);
+        max-height: rem-calc(435);
+        overflow-y: auto;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          background-color: #ffffff;
+          padding: rem-calc(12) rem-calc(24);
+          border-radius: rem-calc(120);
+          align-items: center;
+
+          .frameInput {
+            display: flex;
+            justify-content: space-between;
+
+            .checkCompleted {
+              input[type='checkbox'] {
+                /* Hide the default checkbox */
+                margin-right: rem-calc(12);
+                appearance: none;
+                -webkit-appearance: none; /* For Safari */
+                background-color: #f0f0f0;
+                border: 1px solid #bdbdbd; /* Border color */
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                display: inline-block;
+                border-radius: 5px; /* Add rounded corners if needed */
+                position: relative;
+                transition: all 0.3s ease;
+
+                &:checked {
+                  background-color: #601feb; /* Background color when checked */
+                  border-color: #601feb; /* Change border color when checked */
+                }
+
+                &:checked::after {
+                  content: '';
+                  position: absolute;
+                  top: 3px;
+                  left: 7px;
+                  width: 5px;
+                  height: 10px;
+                  border: solid white;
+                  border-width: 0 2px 2px 0;
+                  transform: rotate(45deg);
+                  color: blue;
+                }
+              }
+            }
+
+            // input {
+            //   border: none;
+            //   font-size: rem_calc(16);
+            //   font-weight: 600;
+            //   line-height: rem_calc(28.8);
+            //   width: rem_calc(324);
+
+            //   &:focus {
+            //     outline: none;
+            //   }
+            // }
+
+            .todoText {
+              font-size: rem-calc(16);
+              font-weight: 600;
+              line-height: rem_calc(28.8);
+              cursor: pointer;
+              transition: color 0.2s ease-in-out;
+            }
+
+            .completedText {
+              text-decoration: line-through;
+            }
+          }
+
+          .deleteIcon {
+            cursor: pointer;
+            width: rem-calc(14);
+            height: rem-calc(14);
+          }
+        }
+      }
+    }
+
+    .spinner {
+      margin: 0 auto;
+      width: rem-calc(32);
+      height: rem-calc(32);
+    }
+  }
+}
